@@ -1,0 +1,15 @@
+class Solution {
+    func topKFrequent(_ nums: [Int], _ k: Int) -> [Int] {
+        var map: [Int: Int] = [:]
+        var result: [Int] = []
+        for num in nums {
+            map[num, default: 0] += 1
+        }
+        for value in map.sorted { $0.value > $1.value} {
+            if result.count < k {
+                result.append(value.key)
+            }
+        }
+        return result
+    }
+}
